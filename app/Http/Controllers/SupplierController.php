@@ -13,17 +13,22 @@ class SupplierController extends Controller
         $supplierTypes = Leverancier::select('leverancier_type')->distinct()->pluck('leverancier_type');
         $leverancierType = $request->leverancier_type;
 
-        $query = Leverancier::with('contacts');
+        $query = Leverancier::with(['contacts' => function ($query) {
+            $query->whereNotNull('email')->orWhereNotNull('mobiel');
+        }]);
 
         if ($leverancierType) {
             $query->where('leverancier_type', $leverancierType)
                 ->whereHas('products');
         }
 
-        $leveranciers = $query->get();
+        $leveranciers = $query->get()->filter(function ($leverancier) {
+            return $leverancier->contacts->isNotEmpty();
+        });
 
         return view('suppliers.index', compact('leveranciers', 'supplierTypes', 'leverancierType'));
     }
+
 
 
     public function showProducts($id)
