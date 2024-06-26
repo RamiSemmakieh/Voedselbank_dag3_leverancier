@@ -1,6 +1,6 @@
 <?php
 
-// app/Http/Controllers/SupplierController.php
+
 namespace App\Http\Controllers;
 
 use App\Models\Leverancier;

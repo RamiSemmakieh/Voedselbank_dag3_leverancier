@@ -1,3 +1,4 @@
+<!-- resources/views/suppliers/index.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +24,12 @@
             </div>
             <button type="submit" class="btn btn-primary">Toon Leveranciers</button>
         </form>
+
+        @if($leveranciers->isEmpty())
+        <div class="alert alert-warning">
+            Er zijn geen leveranciers bekend van het geselecteerde leverancierstype.
+        </div>
+        @else
         <table class="table table-bordered mt-3">
             <thead>
                 <tr>
@@ -57,7 +64,9 @@
                 @endforeach
             </tbody>
         </table>
-        <a href="/" class="btn btn-primary">Home</a>
+        @endif
+
+        <a href="{{ route('home') }}" class="btn btn-primary">Home</a>
     </div>
 </body>
 
