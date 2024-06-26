@@ -1,3 +1,5 @@
+<!-- resources/views/suppliers/index.blade.php -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +15,6 @@
         <h1 class="text-center">Overzicht Leveranciers</h1>
         <form method="GET" action="{{ route('suppliers.index') }}">
             <div class="form-group">
-                <label for="leverancier_type">Selecteer Leverancierstype:</label>
                 <select name="leverancier_type" id="leverancier_type" class="form-control">
                     <option value="">Selecteer Leverancierstype</option>
                     @foreach($supplierTypes as $type)
@@ -25,8 +26,9 @@
             </div>
             <button type="submit" class="btn btn-primary">Toon Leveranciers</button>
         </form>
+
         @if($leveranciers->isEmpty())
-        <div class="alert alert-warning mt-3">Er zijn geen leveranciers bekent van het geselecteerde leverancierstype</div>
+        <div class="alert alert-warning mt-3">Er zijn geen leveranciers bekend van het geselecteerde leverancierstype</div>
         @else
         <table class="table table-bordered mt-3">
             <thead>
@@ -45,8 +47,8 @@
                 <tr>
                     <td>{{ $leverancier->naam }}</td>
                     <td>{{ $leverancier->contactpersoon }}</td>
-                    <td>{{ $leverancier->contacts->first()->email ?? 'N/A' }}</td>
-                    <td>{{ $leverancier->contacts->first()->mobiel ?? 'N/A' }}</td>
+                    <td>{{ optional($leverancier->contacts->first())->email ?? 'N/A' }}</td>
+                    <td>{{ optional($leverancier->contacts->first())->mobiel ?? 'N/A' }}</td>
                     <td>{{ $leverancier->leverancier_nummer }}</td>
                     <td>{{ $leverancier->leverancier_type }}</td>
                     <td>
