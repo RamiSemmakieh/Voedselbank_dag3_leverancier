@@ -13,6 +13,13 @@ class Leverancier extends Model
 
     public function contacts()
     {
-        return $this->belongsToMany(Contact::class, 'contact_per_leverancier');
+        return $this->belongsToMany(Contact::class, 'contact_per_leverancier', 'leverancier_id', 'contact_id');
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'product_per_leverancier', 'leverancier_id', 'product_id')
+            ->withPivot('datum_aangeleverd', 'datum_eerst_volgende_levering')
+            ->withTimestamps();
     }
 }

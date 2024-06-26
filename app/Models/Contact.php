@@ -14,6 +14,6 @@ class Contact extends Model
 
     public function leveranciers()
     {
-        return $this->belongsToMany(Leverancier::class, 'contact_per_leverancier');
+        return $this->belongsToMany(Leverancier::class, 'contact_per_leverancier', 'contact_id', 'leverancier_id');
     }
 }

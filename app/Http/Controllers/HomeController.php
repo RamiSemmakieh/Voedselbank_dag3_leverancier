@@ -1,13 +1,15 @@
 <?php
-// app/Http/Controllers/HomeController.php
+
 namespace App\Http\Controllers;
 
+use App\Models\Leverancier;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('suppliers.homepage');
+        $leveranciers = Leverancier::all();
+        return view('suppliers.homepage', compact('leveranciers'));
     }
 }

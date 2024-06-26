@@ -1,4 +1,3 @@
-<!-- resources/views/suppliers/index.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,23 +11,22 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Overzicht Leveranciers</h1>
-        <form method="GET" action="{{ route('suppliers.index') }}" class="form-inline mb-3">
+        <form method="GET" action="{{ route('suppliers.index') }}">
             <div class="form-group">
-                <label for="leverancier_type" class="mr-2">Selecteer LeverancierType</label>
-                <select name="leverancier_type" id="leverancier_type" class="form-control mr-2">
-                    <option value="">Selecteer LeverancierType</option>
+                <label for="leverancier_type">Selecteer Leverancierstype:</label>
+                <select name="leverancier_type" id="leverancier_type" class="form-control">
+                    <option value="">Selecteer Leverancierstype</option>
                     @foreach($supplierTypes as $type)
-                    <option value="{{ $type }}" {{ request('leverancier_type') == $type ? 'selected' : '' }}>{{ $type }}</option>
+                    <option value="{{ $type }}" {{ $leverancierType == $type ? 'selected' : '' }}>
+                        {{ $type }}
+                    </option>
                     @endforeach
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Toon Leveranciers</button>
         </form>
-
         @if($leveranciers->isEmpty())
-        <div class="alert alert-warning">
-            Er zijn geen leveranciers bekend van het geselecteerde leverancierstype.
-        </div>
+        <div class="alert alert-warning mt-3">Er zijn geen leveranciers bekent van het geselecteerde leverancierstype</div>
         @else
         <table class="table table-bordered mt-3">
             <thead>
@@ -47,25 +45,18 @@
                 <tr>
                     <td>{{ $leverancier->naam }}</td>
                     <td>{{ $leverancier->contactpersoon }}</td>
-                    <td>
-                        @foreach($leverancier->contacts as $contact)
-                        {{ $contact->email }}<br>
-                        @endforeach
-                    </td>
-                    <td>
-                        @foreach($leverancier->contacts as $contact)
-                        {{ $contact->mobiel }}<br>
-                        @endforeach
-                    </td>
+                    <td>{{ $leverancier->contacts->first()->email ?? 'N/A' }}</td>
+                    <td>{{ $leverancier->contacts->first()->mobiel ?? 'N/A' }}</td>
                     <td>{{ $leverancier->leverancier_nummer }}</td>
                     <td>{{ $leverancier->leverancier_type }}</td>
-                    <td><a href="#" class="btn btn-info">Details</a></td>
+                    <td>
+                        <a href="{{ route('suppliers.showProducts', ['id' => $leverancier->id]) }}" class="btn btn-secondary">Bekijk Producten</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
         @endif
-
         <a href="{{ route('home') }}" class="btn btn-primary">Home</a>
     </div>
 </body>
