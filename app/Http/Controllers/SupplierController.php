@@ -11,17 +11,20 @@ class SupplierController extends Controller
     public function index(Request $request)
     {
         $supplierTypes = Leverancier::select('leverancier_type')->distinct()->pluck('leverancier_type');
+        $leverancierType = $request->leverancier_type;
+
         $query = Leverancier::with('contacts');
 
-        if ($request->has('leverancier_type') && $request->leverancier_type != '') {
-            $query->where('leverancier_type', $request->leverancier_type);
+        if ($leverancierType) {
+            $query->where('leverancier_type', $leverancierType)
+                ->whereHas('products');
         }
 
         $leveranciers = $query->get();
-        $leverancierType = $request->leverancier_type;
 
         return view('suppliers.index', compact('leveranciers', 'supplierTypes', 'leverancierType'));
     }
+
 
     public function showProducts($id)
     {
