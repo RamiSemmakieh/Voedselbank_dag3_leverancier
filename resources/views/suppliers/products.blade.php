@@ -32,7 +32,7 @@
                     <td>{{ $product->naam }}</td>
                     <td>{{ $product->soort_allergie }}</td>
                     <td>{{ $product->barcode }}</td>
-                    <td>{{ $product->pivot->datum_eerst_volgende_levering }}</td>
+                    <td>{{ $product->houdbaarheidsdatum }}</td>
                     <td>
                         <a href="{{ route('suppliers.editProduct', [$leverancier->id, $product->id]) }}" class="btn btn-warning">
                             &#9998;
