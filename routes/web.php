@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/suppliers', [SupplierController::class, 'index']);
+Route::get('/suppliers', [SupplierController::class, 'index'])->name('suppliers.index');
+
 
 require __DIR__ . '/auth.php';
