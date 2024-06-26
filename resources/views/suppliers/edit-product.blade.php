@@ -10,7 +10,7 @@
 
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Wijzig Product: {{ $product->naam }}</h1>
+        <h1 class="text-center">Wijzig Product : {{ $product->naam }}</h1>
         <form method="POST" action="{{ route('suppliers.updateProduct', [$leverancierId, $product->id]) }}">
             @csrf
             @method('PATCH')
