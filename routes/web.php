@@ -18,8 +18,10 @@
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/suppliers', [SupplierController::class, 'index'])->name('suppliers.index');
+    // routes/web.php
     Route::get('/suppliers/{id}/products', [SupplierController::class, 'showProducts'])->name('suppliers.showProducts');
     Route::get('/suppliers/{leverancierId}/products/{productId}/edit', [SupplierController::class, 'editProduct'])->name('suppliers.editProduct');
     Route::patch('/suppliers/{leverancierId}/products/{productId}', [SupplierController::class, 'updateProduct'])->name('suppliers.updateProduct');
+
 
     require __DIR__ . '/auth.php';
