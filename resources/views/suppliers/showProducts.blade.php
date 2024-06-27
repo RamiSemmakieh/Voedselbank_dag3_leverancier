@@ -1,4 +1,3 @@
-<!-- resources/views/suppliers/showProducts.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +11,14 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Overzicht Producten voor Leverancier: {{ $leverancier->name }}</h1>
-        @if($products->isEmpty())
+
+        @if(session('success'))
+        <div class="alert alert-success mt-3">
+            {{ session('success') }}
+        </div>
+        @endif
+
+        @if($leverancier->products->isEmpty())
         <div class="alert alert-warning mt-3">Er zijn geen producten beschikbaar voor deze leverancier</div>
         @else
         <table class="table table-bordered mt-3">
@@ -25,7 +31,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($products as $product)
+                @foreach($leverancier->products as $product)
                 <tr>
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->naam }}</td>
