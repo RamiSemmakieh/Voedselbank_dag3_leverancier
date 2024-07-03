@@ -27,7 +27,7 @@
         </form>
 
         @if($leveranciers->isEmpty())
-        <div class="alert alert-warning mt-3">Er zijn geen leveranciers bekent van het geselecteerde leverancierstype</div>
+        <div class="alert alert-warning mt-3">Er zijn geen leveranciers bekend van het geselecteerde leverancierstype</div>
         @else
         <table class="table table-bordered mt-3">
             <thead>
@@ -58,7 +58,7 @@
             </tbody>
         </table>
         @endif
-        <!-- <a href="{{ route('suppliers.index') }}" class="btn btn-primary">Home</a> -->
+        <a href="{{ url('/') }}" class="btn btn-primary">Home</a>
     </div>
 </body>
 
