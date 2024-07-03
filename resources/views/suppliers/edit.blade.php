@@ -1,4 +1,3 @@
-<!-- resources/views/suppliers/editProduct.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 

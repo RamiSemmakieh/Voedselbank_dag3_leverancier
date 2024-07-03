@@ -37,10 +37,10 @@ class SupplierController extends Controller
         return view('suppliers.products', compact('leverancier'));
     }
 
-    public function editProduct($leverancierId, $productId)
+    public function edit($leverancierId, $productId)
     {
         $product = Product::findOrFail($productId);
-        return view('suppliers.editProduct', compact('leverancierId', 'product'));
+        return view('suppliers.edit', compact('leverancierId', 'product'));
     }
 
     public function updateProduct(Request $request, $leverancierId, $productId)

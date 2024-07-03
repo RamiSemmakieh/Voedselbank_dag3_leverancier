@@ -34,7 +34,7 @@
                     <td>{{ $product->barcode }}</td>
                     <td>{{ $product->houdbaarheidsdatum }}</td>
                     <td>
-                        <a href="{{ route('suppliers.editProduct', [$leverancier->id, $product->id]) }}" class="btn btn-warning">
+                        <a href="{{ route('suppliers.edit', [$leverancier->id, $product->id]) }}" class="btn btn-warning">
                             &#9998;
                         </a>
                     </td>
@@ -42,8 +42,7 @@
                 @endforeach
             </tbody>
         </table>
-        <a href="{{ route('suppliers.index') }}" class="btn btn-primary">Terug</a>
-        <a href="{{ route('home') }}" class="btn btn-primary">Home</a>
+        <a href="{{ route('suppliers.index') }}" class="btn btn-primary">Terusssssssssg</a>
     </div>
 </body>
 

@@ -16,11 +16,13 @@
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/', function () {
+        return view('welcome');
+    });
     Route::get('/suppliers', [SupplierController::class, 'index'])->name('suppliers.index');
     // routes/web.php
     Route::get('/suppliers/{id}/products', [SupplierController::class, 'showProducts'])->name('suppliers.showProducts');
-    Route::get('/suppliers/{leverancierId}/products/{productId}/edit', [SupplierController::class, 'editProduct'])->name('suppliers.editProduct');
+    Route::get('/suppliers/{leverancierId}/products/{productId}/edit', [SupplierController::class, 'edit'])->name('suppliers.edit');
     Route::patch('/suppliers/{leverancierId}/products/{productId}', [SupplierController::class, 'updateProduct'])->name('suppliers.updateProduct');
 
 

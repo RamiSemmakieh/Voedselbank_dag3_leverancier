@@ -58,7 +58,7 @@
             </tbody>
         </table>
         @endif
-        <a href="{{ route('home') }}" class="btn btn-primary">Home</a>
+        <!-- <a href="{{ route('suppliers.index') }}" class="btn btn-primary">Home</a> -->
     </div>
 </body>
 
