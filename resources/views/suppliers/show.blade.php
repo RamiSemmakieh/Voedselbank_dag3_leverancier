@@ -42,7 +42,7 @@
                 @endforeach
             </tbody>
         </table>
-        <a href="{{ route('suppliers.index') }}" class="btn btn-primary">Terusssssssssg</a>
+        <a href="{{ route('suppliers.index') }}" class="btn btn-primary">Terug</a>
     </div>
 </body>
 

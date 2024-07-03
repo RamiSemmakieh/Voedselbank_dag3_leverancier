@@ -34,7 +34,7 @@ class SupplierController extends Controller
     public function showProducts($id)
     {
         $leverancier = Leverancier::with('products')->findOrFail($id);
-        return view('suppliers.products', compact('leverancier'));
+        return view('suppliers.show', compact('leverancier'));
     }
 
     public function edit($leverancierId, $productId)
